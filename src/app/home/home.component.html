@@ -1,0 +1,24 @@
+<app-header></app-header>
+<hr>
+<div class="body" *ngIf="Cars">
+    <p class="home_title">Our Cars</p>
+<hr>
+<ng-container *ngFor="let product of Cars" >
+    <div class="card">
+        <mat-card class="example-card">
+            <img mat-card-image src={{product?.Image}} alt="Photo of Product">
+            <mat-card-content>
+                <br>
+                Year:- {{product?.Year}}
+                <br>
+                Product Name:- {{product?.Model}}
+                <br>
+                Price:- {{'₹ '+product?.Price}}
+                <br>
+                Description:- {{product?.Maker}}
+            </mat-card-content>
+          </mat-card>
+    </div>
+</ng-container>
+
+</div>

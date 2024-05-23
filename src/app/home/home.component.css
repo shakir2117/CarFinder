@@ -1,0 +1,43 @@
+hr{
+    border: 2px solid black;
+    width: 100vw;
+}
+.home_title{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+}
+.msg{
+    padding: 20% 42%;
+}
+.titlecase{
+    display: inline-block;
+}
+@media screen and (max-width: 600px){ 
+    .example-card {
+        margin-left: 5%;
+        max-width: 360px;
+    }
+}
+@media screen and (min-width: 600px){
+    .example-card {
+        margin-left: 5%;
+        max-width: 360px;
+    }
+}
+  
+  .example-header-image {
+    height: 50px;
+    width: 50px;
+  }
+img{
+    width: 360px;
+    height: 360px;
+}
+.card{
+    margin:5%;
+    display: inline-flex;
+}
+.body{
+    min-height: 85vh;
+}
