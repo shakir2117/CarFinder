@@ -1,24 +1,58 @@
 <app-header></app-header>
-<hr>
+
 <div class="body" *ngIf="Cars">
-    <p class="home_title">Our Cars</p>
-<hr>
-<ng-container *ngFor="let product of Cars" >
-    <div class="card">
-        <mat-card class="example-card">
-            <img mat-card-image src={{product?.Image}} alt="Photo of Product">
+    <div style="justify-content: space-between;display: flex;align-items: center;margin-inline: 2em;margin-block: 1em;">
+        <p class="home_title">Our Cars</p>
+        <button *ngIf="!showFilter" mat-button (click)="showFilter = true">
+            <mat-icon>filter_list</mat-icon> Filter Cars</button>
+            <button *ngIf="showFilter" mat-button (click)="onClose()">
+                <mat-icon>close</mat-icon> Close Filter</button>
+    </div>
+    <div *ngIf="showFilter">
+        <mat-form-field style="margin-inline: 2em;">
+            <mat-label>Filter by Maker</mat-label>
+            <mat-select [(value)]="selectedMaker" (selectionChange)="getFilteredCars()">
+                <mat-option *ngFor="let maker of Makers" [value]="maker">{{maker}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field style="margin-inline: 2em;">
+            <mat-label>Filter by Year</mat-label>
+            <mat-select [(value)]="selectedYear" (selectionChange)="getFilteredCars()">
+                <mat-option *ngFor="let Year of Years" [value]="Year">{{Year}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field style="margin-inline: 2em;">
+            <mat-label>Filter by Price</mat-label>
+            <mat-select [(value)]="selectedPrice" (selectionChange)="getFilteredCars()">
+                <mat-option *ngFor="let price of prices" [value]="price"><p>Less than ₹ {{price |number}}</p></mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field style="margin-inline: 2em;">
+            <mat-label>Filter by Model</mat-label>
+            <mat-select [(value)]="selectedModel" (selectionChange)="getFilteredCars()">
+                <mat-option *ngFor="let model of models" [value]="model"><p>{{model}}</p></mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+<ng-container *ngFor="let car of Cars" >
+    <div class="card" *ngIf="Cars.lenght != 0">
+        <mat-card>
+            <img mat-card-image src={{car?.Image}} alt="Photo of Cars">
             <mat-card-content>
+                Name :- {{car?.Name}}
                 <br>
-                Year:- {{product?.Year}}
+                Maker:- {{car?.Maker}}
                 <br>
-                Product Name:- {{product?.Model}}
+                Price:- ₹ {{car?.Price | number}}
                 <br>
-                Price:- {{'₹ '+product?.Price}}
+                Year:- {{car?.Year}}
                 <br>
-                Description:- {{product?.Maker}}
             </mat-card-content>
           </mat-card>
     </div>
 </ng-container>
+<div style="text-align: center;align-items: center;">
+    <p *ngIf="Cars.length == 0">No Cars Found</p>
+</div>
 
 </div>

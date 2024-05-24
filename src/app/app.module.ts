@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { SharedModuleModule } from './shared-module/shared-module.module';
 import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,11 +16,14 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SharedModuleModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
